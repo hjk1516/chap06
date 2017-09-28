@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SitemeshConfig {
-   
+
 	@Bean
 	FilterRegistrationBean<ConfigurableSiteMeshFilter> SiteMeshFilter() {
 		FilterRegistrationBean<ConfigurableSiteMeshFilter> filter =
@@ -34,6 +34,7 @@ public class SitemeshConfig {
 				builder.addDecoratorPath("/city/*", "/WEB-INF/decorators/city.jsp");
 				builder.addDecoratorPath("/country/*", "/WEB-INF/decorators/country.jsp");
 				builder.addDecoratorPath("/ontime/*", "/WEB-INF/decorators/ontime.jsp");
+				builder.addDecoratorPath("/bootstrap/*", "/WEB-INF/decorators/bootstrap.jsp");
 				
 			}
 		});
@@ -43,23 +44,26 @@ public class SitemeshConfig {
 												 "/emp/*",
 												 "/city/*",
 												 "/country/*",
-												 "/ontime/*"));		
+												 "/ontime/*",
+												 "/bootstrap/*")
+				);		
+		
 		return filter;
 	}
-	
+
 	@Bean
 	FilterRegistrationBean<Filter> testFilter() {
 		FilterRegistrationBean<Filter> filter = new FilterRegistrationBean<>();
-		
+
 		filter.setFilter(new Filter() {
-			
+
 			@Override
 			public void init(FilterConfig arg0) throws ServletException {
-					System.out.println("###################");
-					System.out.println("## My Filter init()");
-					System.out.println("###################");
+				System.out.println("###################");
+				System.out.println("## My Filter init()");
+				System.out.println("###################");
 			}
-			
+
 			@Override
 			public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 					throws IOException, ServletException {
@@ -70,9 +74,9 @@ public class SitemeshConfig {
 				System.out.println("###################");
 				System.out.println("## My Filter doFilter() end...");
 				System.out.println("###################");
-				
+
 			}
-			
+
 			@Override
 			public void destroy() {
 				System.out.println("#########################");
@@ -81,7 +85,7 @@ public class SitemeshConfig {
 			}
 		});
 		filter.setUrlPatterns(Arrays.asList("/dept/*", "/emp/*"));
-		
+
 		return filter;
 	}
 }

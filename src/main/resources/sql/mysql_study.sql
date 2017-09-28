@@ -1,5 +1,6 @@
 SELECT * FROM dept;
 
+
 SELECT * FROM emp;
 
 UPDATE emp

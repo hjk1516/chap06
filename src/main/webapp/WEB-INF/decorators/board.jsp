@@ -24,14 +24,13 @@
 </c:if>
 
 </head>
-<body>
-   <header>Header</header>
+<body class="container">
+<header class="page-header">
+Header
+</header>
 
-   <section class="panel panel-primary">
-      <div class="panel-heading">WebBoard </div>
-      <div class="panel-body">
+   <section class="panel panel-default">
          <sitemesh:write property="body" />
-      </div>
    </section>
 
    <footer>Footer</footer>
